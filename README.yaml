@@ -12,6 +12,8 @@ tags:
   - aws
   - terraform
   - terraform-modules
+  - cloudwatch
+  - sns-alarms
   - sns
 
 # Categories of this project

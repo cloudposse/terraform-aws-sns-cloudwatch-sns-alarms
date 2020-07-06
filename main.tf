@@ -25,4 +25,3 @@ resource "aws_cloudwatch_metric_alarm" "alarm_on_sns_failed_notifications" {
   ok_actions                = [var.sns_topic_alarms_arn]
   insufficient_data_actions = [var.sns_topic_alarms_arn]
 }
-

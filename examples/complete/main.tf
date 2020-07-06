@@ -11,10 +11,7 @@ module "sns" {
 }
 
 module "sns-alarms" {
-  source    = "../../"
-  namespace = var.namespace
-  name      = var.name
-  stage     = var.stage
+  source = "../../"
 
   sns_topic_name       = module.sns.sns_topic.name
   sns_topic_alarms_arn = module.sns.sns_topic.arn

@@ -42,12 +42,12 @@
 
 [![Cloud Posse][logo]](https://cpco.io/homepage)
 
-# terraform-aws-sns-cloudwatch-alarms
+# terraform-aws-sns-cloudwatch-sns-alarms
 
- [![GitHub Action Build Status](https://github.com/cloudposse/terraform-aws-sns-cloudwatch-alarms/workflows/Chatops/badge.svg?branch=master)](https://github.com/cloudposse/terraform-aws-sns-cloudwatch-alarms/actions?query=workflow%3Achatops) [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-aws-sns-cloudwatch-alarms.svg)](https://github.com/cloudposse/terraform-aws-sns-cloudwatch-alarms/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
+ [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-aws-sns-cloudwatch-sns-alarms.svg)](https://github.com/cloudposse/terraform-aws-sns-cloudwatch-sns-alarms/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
 
 
-Terraform module to provision cloudwatch alarms for SNS
+Terraform module to provision CloudWatch alarms for SNS
 
 
 ---
@@ -81,17 +81,21 @@ We literally have [*hundreds of terraform modules*][terraform_modules] that are 
 
 
 
-## Usage
-
-
-**IMPORTANT:** The `master` branch is used in `source` just as an example. In your code, do not pin to `master` because there may be breaking changes between releases.
-Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest releases](https://github.com/cloudposse/terraform-aws-sns-cloudwatch-alarms/releases).
-
-
-# TODO
 
 
 
+
+## Examples
+
+```
+module "sns_monitoring" {
+  source  = "git::https://github.com/cloudposse/terraform-aws-sns-cloudwatch-sns-alarms.git?ref=0.0.1"
+  enabled = var.monitoring_enabled
+
+  sns_topic_name       = module.sns.sns_topic.name
+  sns_topic_alarms_arn = module.sns.sns_topic.arn
+}
+```
 
 
 
@@ -126,7 +130,6 @@ No requirements.
 | alarm\_on\_sns\_failed\_notifications\_threshold | Threshold for failed notifications on SNS topic. By default it will trigger on any failure. | `number` | `0` | no |
 | alarm\_on\_sns\_failed\_notifications\_treat\_missing\_data | Sets how this alarm is to handle missing data points. The following values are supported: missing, ignore, breaching and notBreaching. | `string` | `"notBreaching"` | no |
 | enabled | Indicates whether this module is enabled | `bool` | n/a | yes |
-| name | Name to distinguish alarms for this SNS topic | `string` | n/a | yes |
 | sns\_topic\_alarms\_arn | ARN of SNS topic that will be subscribed to an alarm. | `string` | n/a | yes |
 | sns\_topic\_name | Name of SNS topic to be monitored. | `string` | n/a | yes |
 
@@ -137,11 +140,32 @@ No output.
 
 
 
+## Share the Love 
+
+Like this project? Please give it a ★ on [our GitHub](https://github.com/cloudposse/terraform-aws-sns-cloudwatch-sns-alarms)! (it helps us **a lot**) 
+
+Are you using this project or any of our other projects? Consider [leaving a testimonial][testimonial]. =)
+
+
+## Related Projects
+
+Check out these related projects.
+
+- [terraform-aws-sns-topic](https://github.com/cloudposse/terraform-aws-sns-topic) - Terraform Module to Provide an Amazon Simple Notification Service (SNS)
+- [terraform-aws-ecs-cloudwatch-sns-alarms](https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms) - Terraform module that configures CloudWatch SNS alerts for ECS
+- [terraform-aws-efs-cloudwatch-sns-alarms](https://github.com/cloudposse/terraform-aws-efs-cloudwatch-sns-alarms) - Terraform module that configures CloudWatch SNS alerts for EFS
+- [terrform-aws-elasticache-cloudwatch-sns-alarms](https://github.com/cloudposse/terraform-aws-elasticache-cloudwatch-sns-alarms) - Terraform module that configures CloudWatch SNS alerts for ElastiCache
+- [terraform-aws-lambda-cloudwatch-sns-alarms](https://github.com/cloudposse/terraform-aws-lambda-cloudwatch-sns-alarms) - Terraform module for creating a set of Lambda alarms and outputting to an endpoint
+- [terraform-aws-rds-cloudwatch-sns-alarms](https://github.com/cloudposse/terraform-aws-rds-cloudwatch-sns-alarms) - Terraform module that configures important RDS alerts using CloudWatch and sends them to an SNS topic
+- [terraform-aws-sqs-cloudwatch-sns-alarms](https://github.com/cloudposse/terraform-aws-sqs-cloudwatch-sns-alarms) - Terraform module for creating alarms for SQS and notifying endpoints
+
+
+
 ## Help
 
 **Got a question?** We got answers. 
 
-File a GitHub [issue](https://github.com/cloudposse/terraform-aws-sns-cloudwatch-alarms/issues), send us an [email][email] or join our [Slack Community][slack].
+File a GitHub [issue](https://github.com/cloudposse/terraform-aws-sns-cloudwatch-sns-alarms/issues), send us an [email][email] or join our [Slack Community][slack].
 
 [![README Commercial Support][readme_commercial_support_img]][readme_commercial_support_link]
 
@@ -189,7 +213,7 @@ Sign up for [our newsletter][newsletter] that covers everything on our technolog
 
 ### Bug Reports & Feature Requests
 
-Please use the [issue tracker](https://github.com/cloudposse/terraform-aws-sns-cloudwatch-alarms/issues) to report any bugs or file feature requests.
+Please use the [issue tracker](https://github.com/cloudposse/terraform-aws-sns-cloudwatch-sns-alarms/issues) to report any bugs or file feature requests.
 
 ### Developing
 
@@ -273,32 +297,32 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
 [![Beacon][beacon]][website]
 
   [logo]: https://cloudposse.com/logo-300x69.svg
-  [docs]: https://cpco.io/docs?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=docs
-  [website]: https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=website
-  [github]: https://cpco.io/github?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=github
-  [jobs]: https://cpco.io/jobs?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=jobs
-  [hire]: https://cpco.io/hire?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=hire
-  [slack]: https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=slack
-  [linkedin]: https://cpco.io/linkedin?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=linkedin
-  [twitter]: https://cpco.io/twitter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=twitter
-  [testimonial]: https://cpco.io/leave-testimonial?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=testimonial
-  [office_hours]: https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=office_hours
-  [newsletter]: https://cpco.io/newsletter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=newsletter
-  [discourse]: https://ask.sweetops.com/?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=discourse
-  [email]: https://cpco.io/email?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=email
-  [commercial_support]: https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=commercial_support
-  [we_love_open_source]: https://cpco.io/we-love-open-source?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=we_love_open_source
-  [terraform_modules]: https://cpco.io/terraform-modules?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=terraform_modules
+  [docs]: https://cpco.io/docs?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=docs
+  [website]: https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=website
+  [github]: https://cpco.io/github?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=github
+  [jobs]: https://cpco.io/jobs?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=jobs
+  [hire]: https://cpco.io/hire?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=hire
+  [slack]: https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=slack
+  [linkedin]: https://cpco.io/linkedin?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=linkedin
+  [twitter]: https://cpco.io/twitter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=twitter
+  [testimonial]: https://cpco.io/leave-testimonial?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=testimonial
+  [office_hours]: https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=office_hours
+  [newsletter]: https://cpco.io/newsletter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=newsletter
+  [discourse]: https://ask.sweetops.com/?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=discourse
+  [email]: https://cpco.io/email?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=email
+  [commercial_support]: https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=commercial_support
+  [we_love_open_source]: https://cpco.io/we-love-open-source?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=we_love_open_source
+  [terraform_modules]: https://cpco.io/terraform-modules?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=terraform_modules
   [readme_header_img]: https://cloudposse.com/readme/header/img
-  [readme_header_link]: https://cloudposse.com/readme/header/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=readme_header_link
+  [readme_header_link]: https://cloudposse.com/readme/header/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=readme_header_link
   [readme_footer_img]: https://cloudposse.com/readme/footer/img
-  [readme_footer_link]: https://cloudposse.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=readme_footer_link
+  [readme_footer_link]: https://cloudposse.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=readme_footer_link
   [readme_commercial_support_img]: https://cloudposse.com/readme/commercial-support/img
-  [readme_commercial_support_link]: https://cloudposse.com/readme/commercial-support/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-alarms&utm_content=readme_commercial_support_link
-  [share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-sns-cloudwatch-alarms&url=https://github.com/cloudposse/terraform-aws-sns-cloudwatch-alarms
-  [share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-sns-cloudwatch-alarms&url=https://github.com/cloudposse/terraform-aws-sns-cloudwatch-alarms
-  [share_reddit]: https://reddit.com/submit/?url=https://github.com/cloudposse/terraform-aws-sns-cloudwatch-alarms
-  [share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/cloudposse/terraform-aws-sns-cloudwatch-alarms
-  [share_googleplus]: https://plus.google.com/share?url=https://github.com/cloudposse/terraform-aws-sns-cloudwatch-alarms
-  [share_email]: mailto:?subject=terraform-aws-sns-cloudwatch-alarms&body=https://github.com/cloudposse/terraform-aws-sns-cloudwatch-alarms
-  [beacon]: https://ga-beacon.cloudposse.com/UA-76589703-4/cloudposse/terraform-aws-sns-cloudwatch-alarms?pixel&cs=github&cm=readme&an=terraform-aws-sns-cloudwatch-alarms
+  [readme_commercial_support_link]: https://cloudposse.com/readme/commercial-support/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-sns-cloudwatch-sns-alarms&utm_content=readme_commercial_support_link
+  [share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-sns-cloudwatch-sns-alarms&url=https://github.com/cloudposse/terraform-aws-sns-cloudwatch-sns-alarms
+  [share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-sns-cloudwatch-sns-alarms&url=https://github.com/cloudposse/terraform-aws-sns-cloudwatch-sns-alarms
+  [share_reddit]: https://reddit.com/submit/?url=https://github.com/cloudposse/terraform-aws-sns-cloudwatch-sns-alarms
+  [share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/cloudposse/terraform-aws-sns-cloudwatch-sns-alarms
+  [share_googleplus]: https://plus.google.com/share?url=https://github.com/cloudposse/terraform-aws-sns-cloudwatch-sns-alarms
+  [share_email]: mailto:?subject=terraform-aws-sns-cloudwatch-sns-alarms&body=https://github.com/cloudposse/terraform-aws-sns-cloudwatch-sns-alarms
+  [beacon]: https://ga-beacon.cloudposse.com/UA-76589703-4/cloudposse/terraform-aws-sns-cloudwatch-sns-alarms?pixel&cs=github&cm=readme&an=terraform-aws-sns-cloudwatch-sns-alarms

@@ -19,7 +19,6 @@ No requirements.
 | alarm\_on\_sns\_failed\_notifications\_threshold | Threshold for failed notifications on SNS topic. By default it will trigger on any failure. | `number` | `0` | no |
 | alarm\_on\_sns\_failed\_notifications\_treat\_missing\_data | Sets how this alarm is to handle missing data points. The following values are supported: missing, ignore, breaching and notBreaching. | `string` | `"notBreaching"` | no |
 | enabled | Indicates whether this module is enabled | `bool` | n/a | yes |
-| name | Name to distinguish alarms for this SNS topic | `string` | n/a | yes |
 | sns\_topic\_alarms\_arn | ARN of SNS topic that will be subscribed to an alarm. | `string` | n/a | yes |
 | sns\_topic\_name | Name of SNS topic to be monitored. | `string` | n/a | yes |
 

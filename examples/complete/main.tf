@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "sns" {
-  source = "git::https://github.com/cloudposse/terraform-aws-sns-topic.git?ref=initial"
+  source = "git::https://github.com/cloudposse/terraform-aws-sns-topic.git?ref=0.1.0"
 
   name      = var.name
   namespace = var.namespace

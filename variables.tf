@@ -1,6 +1,7 @@
 variable "enabled" {
   type        = bool
   description = "Indicates whether this module is enabled"
+  default     = true
 }
 
 variable "sns_topic_name" {

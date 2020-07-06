@@ -46,7 +46,7 @@ description: |-
 
 # Example usage
 examples: |-
-  ```
+  ```hcl
   module "sns_monitoring" {
     source  = "git::https://github.com/cloudposse/terraform-aws-sns-cloudwatch-sns-alarms.git?ref=0.0.1"
     enabled = var.monitoring_enabled

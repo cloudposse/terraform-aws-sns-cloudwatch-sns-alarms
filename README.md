@@ -87,7 +87,7 @@ We literally have [*hundreds of terraform modules*][terraform_modules] that are 
 
 ## Examples
 
-```
+```hcl
 module "sns_monitoring" {
   source  = "git::https://github.com/cloudposse/terraform-aws-sns-cloudwatch-sns-alarms.git?ref=0.0.1"
   enabled = var.monitoring_enabled
@@ -129,7 +129,7 @@ No requirements.
 | alarm\_on\_sns\_failed\_notifications\_statistic | The statistic to apply to the alarm's associated metric. [SampleCount, Average, Sum, Minimum, Maximum] | `string` | `"Sum"` | no |
 | alarm\_on\_sns\_failed\_notifications\_threshold | Threshold for failed notifications on SNS topic. By default it will trigger on any failure. | `number` | `0` | no |
 | alarm\_on\_sns\_failed\_notifications\_treat\_missing\_data | Sets how this alarm is to handle missing data points. The following values are supported: missing, ignore, breaching and notBreaching. | `string` | `"notBreaching"` | no |
-| enabled | Indicates whether this module is enabled | `bool` | n/a | yes |
+| enabled | Indicates whether this module is enabled | `bool` | `true` | no |
 | sns\_topic\_alarms\_arn | ARN of SNS topic that will be subscribed to an alarm. | `string` | n/a | yes |
 | sns\_topic\_name | Name of SNS topic to be monitored. | `string` | n/a | yes |
 

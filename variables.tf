@@ -1,9 +1,3 @@
-variable "enabled" {
-  type        = bool
-  description = "Indicates whether this module is enabled"
-  default     = true
-}
-
 variable "sns_topic_name" {
   type        = string
   description = "Name of SNS topic to be monitored."

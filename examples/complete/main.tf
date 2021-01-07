@@ -3,11 +3,10 @@ provider "aws" {
 }
 
 module "sns" {
-  source = "git::https://github.com/cloudposse/terraform-aws-sns-topic.git?ref=0.1.0"
+  source  = "cloudposse/sns-topic/aws"
+  version = "0.11.0"
 
-  name      = var.name
-  namespace = var.namespace
-  stage     = var.stage
+  context = module.this.context
 }
 
 module "sns-alarms" {
@@ -15,4 +14,6 @@ module "sns-alarms" {
 
   sns_topic_name       = module.sns.sns_topic.name
   sns_topic_alarms_arn = module.sns.sns_topic.arn
+
+  context = module.this.context
 }

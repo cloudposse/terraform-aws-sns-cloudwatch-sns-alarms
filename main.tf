@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_metric_alarm" "alarm_on_sns_failed_notifications" {
-  count = var.enabled ? 1 : 0
+  count = module.this.enabled ? 1 : 0
 
   alarm_name        = replace("${var.sns_topic_name}_failed_notifications", "-", "_")
   alarm_description = "An alarm that goes off when SNS ${var.sns_topic_name} topic fails to deliver messages."
